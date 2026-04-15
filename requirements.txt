@@ -1,0 +1,57 @@
+# ============================================
+# OpenVINO 智能食谱推荐系统 - 依赖包列表
+# ============================================
+# 项目包含: OCR识别、多模态VLM、语音合成(TTS)
+# 基于 Qwen3-VL, PaddleOCR-VL, Qwen3-TTS 模型
+# ============================================
+
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+# ===== Core Inference =====
+openvino==2026.0
+nncf>=2.15.0
+
+# ===== PyTorch (CPU版本) =====
+torch==2.8
+torchvision==0.23.0
+torchaudio==2.8.0
+
+# ===== Optimum Intel (OpenVINO优化) =====
+# 使用固定commit确保兼容性
+git+https://github.com/openvino-dev-samples/optimum-intel.git@2f62e5aee74b4acba3836e1f26678c0db0a09c00
+
+# ===== Transformers & Hugging Face =====
+transformers>=4.45.0
+accelerate>=0.30.0
+huggingface_hub>=0.24.0
+
+# ===== Gradio UI框架 =====
+gradio==6.9.0
+
+# ===== VLM (视觉语言模型) 依赖 =====
+qwen-vl-utils
+Pillow>=9.0.0
+
+# ===== TTS (语音合成) 依赖 =====
+scipy>=1.10.0
+qwen-asr
+
+# ===== OCR (光学字符识别) 依赖 =====
+# PaddleOCR相关依赖已通过自定义模型实现
+
+# ===== 数据处理 =====
+numpy<2.0
+opencv-python-headless>=4.8.0
+
+# ===== Jupyter Notebook支持 =====
+jupyterlab>=4.0.0
+ipywidgets>=8.0.0
+ipykernel>=6.0.0
+
+# ===== 模型下载工具 =====
+modelscope>=1.15.0
+
+# ===== 其他通用依赖 =====
+requests>=2.31.0
+tqdm>=4.65.0
+pyyaml>=6.0
