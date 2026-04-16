@@ -1,7 +1,7 @@
-# -*- coding: utf-8 -*-
+ # -*- coding: utf-8 -*-
 """
 智能食谱推荐系统 (基于 Qwen 大模型)
-灵感来源: lab5.ipynb (MeetWise小马妙记架构重构)
+ 
 """
 
 import json
@@ -147,7 +147,7 @@ class SmartRecipeSystem:
 # --------------------------------------------------
 
 def interactive_demo():
-    print("# 智能食谱推荐系统 (MeetTaste 小马妙吃)")
+    print("# 智能食谱推荐系统")
     print("基于 Qwen 大模型为您定制专属食谱\n")
     
     # --- 模拟文档中的模型加载流程 ---
