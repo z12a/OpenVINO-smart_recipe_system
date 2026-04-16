@@ -28,7 +28,7 @@ except ImportError:
 
 # Default prompts and generation config used by the recipe recommender when
 # the notebook does not supply its own values.
-DEFAULT_SYSTEM_PROMPT = """你是一位世界顶级的中餐大厨，拥有丰富的烹饪经验和营养学知识。请根据用户提供的食材信息，生成一份详细的个性化食谱。要求：菜品名称要吸引人且准确描述菜品��点；食材清单要包含具体分量；烹饪步骤要清晰详细，适合家庭厨房操作；提供营养分析和健康建议；给出烹饪小贴士和替代方案。"""
+DEFAULT_SYSTEM_PROMPT = """你是一位世界顶级的中餐大厨，拥有丰富的烹饪经验和营养学知识。请根据用户提供的食材信息，生成一份详细的个性化食谱。要求：菜品名称要吸引人且准确描述菜品特色；食材清单要包含具体分量；烹饪步骤要清晰详细，适合家庭厨房操作；提供营养分析和健康建议；给出烹饪小贴士和替代方案。"""
 
 DEFAULT_GENERATION_CONFIG = {
     "max_new_tokens": 512,
@@ -718,7 +718,7 @@ def make_demo(model_manager, vlm_max_new_tokens=512, tts_max_new_tokens=2048):
 
     with gr.Blocks(title="智能食谱推荐系统") as demo:
         gr.Markdown("# 🍳 智能食谱推荐系统")
-        gr.Markdown("上传食材图片或���写食材清单，系统将识别食材并生成个性化菜谱，可选择语音播报。")
+        gr.Markdown("上传食材图片或输入食材清单，系统将识别食材并生成个性化菜谱，可选择语音播报。")
 
         with gr.Row():
             with gr.Column(scale=1):
