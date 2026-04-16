@@ -1,8 +1,8 @@
-"""
-Gradio helper for Drug OCR Pipeline.
+ """
+Gradio helper for Smart Recipe Recommendation System.
 Provides a ModelManager for lazy model loading, and a make_demo function
-to create the Gradio interface for drug instruction leaflet OCR recognition,
-VLM extraction, and TTS playback.
+to create the Gradio interface for ingredient recognition, recipe generation,
+and TTS playback.
 """
 
 import gc
@@ -15,9 +15,9 @@ import math
 import numpy as np
 import gradio as gr
 from PIL import Image
-from scipy.io.wavfile import write as wav_write
+from scipy.io.wavfile import write
 
-logger = logging.getLogger("drug_ocr")
+logger = logging.getLogger("recipe_recommender")
 
 # Add support for qwen3_vl model type
 try:
@@ -210,6 +210,9 @@ class ModelManager:
 
             device = self._normalize_device(self.device)
             config = AutoConfig.from_pretrained(self.vlm_model_dir, trust_remote_code=True)
+            # Handle unsupported model types
+            if config.model_type == 'qwen3_vl':
+                config.model_type = 'qwen2_vl'
             if not hasattr(config.vision_config, "embed_dim"):
                 if hasattr(config.vision_config, "hidden_size"):
                     config.vision_config.embed_dim = config.vision_config.hidden_size
@@ -697,7 +700,7 @@ def make_demo(model_manager, vlm_max_new_tokens=512, tts_max_new_tokens=2048):
             if enable_tts and result.get("audio") is not None:
                 sr, wav_data = result["audio"]
                 audio_tmp = tempfile.NamedTemporaryFile(suffix=".wav", delete=False)
-                wav_write(audio_tmp.name, sr, wav_data.astype(np.float32))
+                write(audio_tmp.name, sr, wav_data.astype(np.float32))
                 audio_path = audio_tmp.name
 
             return ingredients, recipe, audio_path
