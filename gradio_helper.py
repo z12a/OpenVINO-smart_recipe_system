@@ -1,4 +1,4 @@
- """
+"""
 Gradio helper for Smart Recipe Recommendation System.
 Provides a ModelManager for lazy model loading, and a make_demo function
 to create the Gradio interface for ingredient recognition, recipe generation,
